@@ -1,2 +1,4 @@
 *.o
 data/trust.db*
+libTrust.a
+main

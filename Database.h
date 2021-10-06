@@ -1,7 +1,10 @@
 #ifndef Trust_Database_h
 #define Trust_Database_h
 
+#include <cstdint>
 #include "sqlite_modern_cpp/hdr/sqlite_modern_cpp.h"
+#include <string>
+
 
 namespace Trust
 {
@@ -16,10 +19,14 @@ class Database
         void create_indices();
 
     public:
-        Database();
+        Database(const std::string& path = "data/trust.db");
 
+        void add_channel(const std::string& claim_hash,
+                         std::uint64_t amount);
 
-
+        void add_support(const std::string& from_channel,
+                         const std::string& to_channel,
+                         std::uint64_t amount);
 };
 
 
