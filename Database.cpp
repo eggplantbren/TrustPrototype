@@ -27,11 +27,11 @@ void Database::create_tables()
 WITHOUT ROWID;";
 
     db << "CREATE TABLE IF NOT EXISTS edges\
-(to     BLOB NOT NULL REFERENCES nodes (claim_hash),\
- from   BLOB REFERENCES nodes (claim_hash),\
- amount INTEGER NOT NULL,\
- trust  REAL NOT NULL,\
- PRIMARY KEY (to, from))\
+(to_channel   BLOB NOT NULL REFERENCES nodes (claim_hash),\
+ from_channel BLOB REFERENCES nodes (claim_hash),\
+ amount       INTEGER NOT NULL,\
+ trust        REAL NOT NULL,\
+ PRIMARY KEY (to_channel, from_channel))\
 WITHOUT ROWID;";
 
 }
