@@ -30,7 +30,8 @@ WITHOUT ROWID;";
 (to     BLOB NOT NULL REFERENCES nodes (claim_hash),\
  from   BLOB REFERENCES nodes (claim_hash),\
  amount INTEGER NOT NULL,\
- trust  REAL NOT NULL)\
+ trust  REAL NOT NULL,\
+ PRIMARY KEY (to, from))\
 WITHOUT ROWID;";
 
 }
