@@ -1,4 +1,4 @@
-FLAGS = -std=c++20 -O2 -Wall -Wextra -pedantic
+FLAGS = -std=c++20 -O2 -g -Wall -Wextra -pedantic
 
 default: sqlite3.o
 	g++ $(FLAGS) -c Database.cpp

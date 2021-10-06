@@ -2,6 +2,7 @@
 #define Trust_Database_h
 
 #include <cstdint>
+#include <optional>
 #include "sqlite_modern_cpp/hdr/sqlite_modern_cpp.h"
 #include <string>
 
@@ -20,13 +21,21 @@ class Database
 
     public:
         Database(const std::string& path = "data/trust.db");
+        Database(const Database& other) = delete;
+        Database(Database&& other) = delete;
+        Database& operator = (const Database& other) = delete;
 
-        void add_channel(const std::string& claim_hash,
-                         std::uint64_t amount);
+        void insert_channel(const std::string& claim_hash,
+                            std::uint64_t amount);
 
-        void add_support(const std::string& from_channel,
+        void upsert_edge(const std::string& from_channel,
                          const std::string& to_channel,
-                         std::uint64_t amount);
+                         long long amount);
+
+        void update_trust(const std::string& claim_hash);
+
+        // Update all trust scores once
+        void update_trust();
 };
 
 
